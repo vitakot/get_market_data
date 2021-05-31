@@ -1,2 +1,2 @@
-# vix_downloader
-Utility for downloading VIX and VIX3M data from CBOE
+# Get Market Data
+Utility for downloading EOD market data from https://marketstack.com/ and https://finance.yahoo.com/.

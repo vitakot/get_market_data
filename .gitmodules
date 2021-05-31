@@ -1,0 +1,12 @@
+[submodule "json"]
+	path = json
+	url = git@github.com:nlohmann/json.git
+[submodule "spdlog"]
+	path = spdlog
+	url = git@github.com:gabime/spdlog.git
+[submodule "cxxopts"]
+	path = cxxopts
+	url = git@github.com:jarro2783/cxxopts.git
+[submodule "http-status-codes-cpp"]
+	path = http-status-codes-cpp
+	url = git@github.com:j-ulrich/http-status-codes-cpp.git
