@@ -142,6 +142,7 @@ bool GMDYahooCurlGetter::checkExistingFile(const std::string &path, time_t &time
                 return true;
             }
         }
+
         inFile.close();
     }
 
@@ -185,6 +186,8 @@ void GMDYahooCurlGetter::createOrUpdateSymbolFile(const std::string &symbol, con
     std::time_t timeOfNewestRecord;
     std::string eodData;
 
+    fixFileEnding(path);
+
     if (checkExistingFile(path, timeOfNewestRecord)) {
 
         outFile.open(path, std::ofstream::out | std::ofstream::app);
@@ -211,4 +214,25 @@ void GMDYahooCurlGetter::createOrUpdateSymbolFile(const std::string &symbol, con
             throw std::runtime_error("Cannot open file: " + path);
         }
     }
+}
+
+void GMDYahooCurlGetter::fixFileEnding(const std::string &path) {
+
+    std::fstream ioFile(path);
+
+    if (ioFile.is_open()) {
+
+        ioFile.seekg(0, std::ios_base::end);
+        size_t length = ioFile.tellg();
+        ioFile.seekg(length - 1, std::ios_base::beg);
+
+        char ch = 0;
+        ioFile.get(ch);
+
+        if (ch != '\n') {
+            ioFile.put('\n');
+        }
+    }
+
+    ioFile.close();
 }

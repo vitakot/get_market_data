@@ -21,6 +21,8 @@ class GMDYahooCurlGetter : public GMDICurlGetter {
 
     static bool checkExistingFile(const std::string &path, time_t &timeOfNewestRecord);
 
+    static void fixFileEnding(const std::string &path);
+
     void getEODSymbolData(const std::string &symbol, const std::string &path, std::time_t from, std::string &eodData);
 
     static void appendDataToFile(const std::string &data, std::ofstream &outFile);
